@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const { connectToMongoDB } = require("./connect");
 const urlRoute = require("./routes/url");
