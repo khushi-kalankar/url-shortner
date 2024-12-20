@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const [url, setUrl] = useState("");
-  const [shortId, setShortId] = useState(localStorage.getItem("shortId") || "");
-  const [fullUrl, setFullUrl] = useState(localStorage.getItem("fullUrl") || "");
+  const [shortId, setShortId] = useState("");
+  const [fullUrl, setFullUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-  const navigate = useNavigate();
+  
 
 
   const handleShorten = async () => {
@@ -25,9 +25,6 @@ const Hero = () => {
 
       setShortId(shortId);
       setFullUrl(fullUrl);
-
-      localStorage.setItem("shortId", shortId);
-      localStorage.setItem("fullUrl", fullUrl);
     } catch (error) {
       console.error("Error generating short URL:", error);
     } finally {
@@ -35,9 +32,6 @@ const Hero = () => {
     }
   };
 
-  const handleAnalytics = () =>{
-    navigate(`/analytics/${shortId}`);
-  }
   
   const handleCopy = async () => {
     try {
@@ -54,10 +48,10 @@ const Hero = () => {
   return (
     <div>
       <div className="flex flex-col justify-center bg-black h-80 items-center max-w-full">
-        <div className="text-white text-5xl font-bold items-center justify-center w-auto px-7 pt-7 flex-col sm:text-6xl">
+        <div className="text-white text-3xl font-bold items-center justify-center w-auto px-7 pt-7 flex-col sm:text-4xl">
           Shorten your links, expand your reach.
         </div>
-        <div className="pt-6 text-3xl text-gray-400 font-normal sm:px-8">
+        <div className="pt-6 text-xl px-5 text-gray-400 font-normal sm:px-8">
           Simplify your online presence with our powerful URL shortening tool.
         </div>
         <div className="flex mt-5 w-full px-40">
@@ -65,7 +59,7 @@ const Hero = () => {
             onChange={(e) => setUrl(e.target.value)}
             type="text"
             placeholder="Enter your long URL"
-            className="rounded-lg h-12 mt-8 pl-3 placeholder:text-3xl sm:w-full text-xl"
+            className="rounded-lg h-12 mt-8 pl-3 placeholder:text-xl sm:w-full text-xl"
           />
           <div className="flex justify-center items-center mt-8 pl-5 text-2xl">
             <button
@@ -78,28 +72,25 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      {fullUrl && (
+    
         <div className="justify-center">
-          <div className="flex justify-between items-center mt-7 shadow-md h-20 rounded-md mx-7">
-            <div className="font-semibold ml-5 text-3xl">
+          <div className="flex justify-between items-center mt-7 shadow-md h-15 rounded-md mx-5">
+            <div className="font-semibold ml-5 text-lg">
               Shortened URL:
             </div>
             <div
-              className="items-center hover:text-gray-600 text-3xl"
+              className="items-center hover:text-gray-600 text-lg"
               onClick={() => window.open(fullUrl, "_blank")}
               style={{ cursor: "pointer" }}
             >
               {fullUrl}
             </div>
-            <div className="flex gap-2 mr-4">
-              <div className="bg-gray-200 rounded-full flex justify-center items-center px-3 py-1 text-3xl cursor-pointer"
-              onClick={handleAnalytics}>
-                No. of clicks
-              </div>
-              <button className="bg-gray-200 rounded-full w-16 h-16 items-center justify-center pb-1 pl-1 hover:bg-gray-300 hover:shadow-md
+            <div className="flex gap-2 mr-4 py-2">
+          
+              <button className="bg-gray-200 rounded-full w-12 h-12 items-center justify-center pb-2 hover:bg-gray-300 hover:shadow-md
               " onClick={handleCopy}>
                 <svg
-                  className="h-12 w-12 text-black items-center justify-center pt-2 pl-2"
+                  className="h-10 w-10 text-black items-center justify-center pt-2 pl-2"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -125,7 +116,6 @@ const Hero = () => {
           )}
 
         </div>
-      )}
     </div>
   );
 };
