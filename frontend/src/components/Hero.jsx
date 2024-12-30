@@ -46,18 +46,18 @@ const Hero = () => {
   return (
     <div>
       <div className="flex flex-col justify-center bg-black h-80 items-center max-w-full">
-        <div className="text-white text-3xl font-bold items-center justify-center w-auto px-7 pt-7 flex-col sm:text-4xl">
+        <div className="text-white text-center text-3xl font-bold items-center justify-center w-auto px-7 pt-7 flex-col sm:text-4xl">
           Shorten your links, expand your reach.
         </div>
-        <div className="pt-6 text-xl px-5 text-gray-400 font-normal sm:px-8">
+        <div className="pt-6 text-xl px-6 text-center text-gray-400 font-normal sm:px-10">
           Simplify your online presence with our powerful URL shortening tool.
         </div>
-        <div className=" flex items-center mt-5 w-full px-40">
+        <div className=" flex items-center mt-5 w-screen px-4">
           <input
             onChange={(e) => setUrl(e.target.value)}
             type="text"
             placeholder="Enter your long URL"
-            className="rounded-lg h-12 mt-7 pl-3 placeholder:text-xl w-full sm:w-full text-xl"
+            className="rounded-lg h-12 mt-7 pl-3 placeholder:text-xl w-screen sm:w-screen text-xl"
           />
           <div className="flex justify-center items-center mt-8 pl-5 text-2xl">
             <button
